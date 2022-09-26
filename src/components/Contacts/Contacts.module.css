@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.container a{
+  text-decoration: none;
+  color: var(--red);
+}
+
+.container p{
+  margin: 0;
+  margin-bottom: 2em;
+  font-weight: 400;
+  font-style: italic;
+}
