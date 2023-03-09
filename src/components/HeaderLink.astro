@@ -4,12 +4,16 @@ import AnimatedLink from "./AnimatedLink.astro";
 
 export type Props = HTMLAttributes<"a">;
 
-const { href } = Astro.props;
+const { href, slot, ...props } = Astro.props;
 
 const { pathname } = Astro.url;
 const isActive = href === pathname || href === pathname.replace(/\/$/, "");
 ---
 
-<AnimatedLink href={href} class={isActive ? "font-bold underline" : ""}>
+<AnimatedLink
+  href={href}
+  class={`${isActive ? "font-bold underline" : ""} text-right`}
+  {...props}
+>
   <slot />
 </AnimatedLink>
