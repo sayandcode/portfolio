@@ -5,5 +5,7 @@
     "src/**/*.astro",
     "src/**/*.js",
     "./.eslintrc.cjs",
+    "./tailwind.config.cjs",
+    "astro.config.mjs"
   ]
 }

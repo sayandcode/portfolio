@@ -1,29 +1,25 @@
 ---
+import AnimatedLink from "./AnimatedLink.astro";
 import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
 ---
 
-<header>
-  <h2>
+<header class="flex items-center justify-between gap-x-4 p-6">
+  <AnimatedLink
+    href="/"
+    class="font-bold text-2xl"
+    style={{ "--base-color": "#444" }}
+  >
     {SITE_TITLE}
-  </h2>
-  <nav>
-    <HeaderLink href="/">Home</HeaderLink>
+  </AnimatedLink>
+  <nav class="flex flex-wrap justify-end gap-2 gap-x-4">
+    <HeaderLink href="/projects">Projects</HeaderLink>
     <HeaderLink href="/blog">Blog</HeaderLink>
-    <HeaderLink href="/about">About</HeaderLink>
-    <HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">
-      Twitter
-    </HeaderLink>
-    <HeaderLink href="https://github.com/withastro/astro" target="_blank">
+    <HeaderLink href="https://github.com/sayandcode/" target="_blank">
       GitHub
+    </HeaderLink>
+    <HeaderLink href="https://www.linkedin.com/in/sayandcode/" target="_blank">
+      LinkedIn
     </HeaderLink>
   </nav>
 </header>
-<style>
-  header {
-    margin: 0em 0 2em;
-  }
-  h2 {
-    margin: 0.5em 0;
-  }
-</style>
