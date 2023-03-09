@@ -1,4 +1,5 @@
 const plugin = require("tailwindcss/plugin");
+const typewriter = require("tailwind-typewriter");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -10,6 +11,22 @@ module.exports = {
     extend: {},
   },
   plugins: [
+    typewriter({
+      wordsets: {
+        whoami: {
+          words: [
+            "full stack developer",
+            "motion designer",
+            "mechanical engineer",
+            "guitarist",
+            "libertarian",
+          ],
+          writeSpeed: 0.2,
+          eraseSpeed: 0.05,
+          caretWidth: "0.5em",
+        },
+      },
+    }),
     plugin(({ addBase }) => {
       addBase({
         "*": { color: "#444" },
