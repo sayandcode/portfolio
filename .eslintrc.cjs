@@ -18,7 +18,9 @@ module.exports = {
     project: "./tsconfig.eslint.json",
   },
   plugins: ["@typescript-eslint"],
-  rules: {},
+  rules: {
+    "@typescript-eslint/no-use-before-define": ["error", { functions: false }],
+  },
   overrides: [
     {
       files: ["*.astro"],
@@ -27,7 +29,9 @@ module.exports = {
         parser: "@typescript-eslint/parser",
         extraFileExtensions: [".astro"],
       },
-      rules: {},
+      rules: {
+        "import/no-unresolved": "off",
+      },
     },
   ],
 };

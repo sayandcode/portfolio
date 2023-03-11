@@ -15,10 +15,14 @@
     "@astrojs/sitemap": "^1.1.0",
     "@astrojs/tailwind": "^3.1.0",
     "astro": "^2.1.0",
+    "highlight.js": "^11.7.0",
+    "marked": "^4.2.12",
     "tailwind-typewriter": "^1.0.1",
     "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
+    "@types/marked": "^4.0.8",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.1",
     "eslint": "^7.32.0 || ^8.2.0",

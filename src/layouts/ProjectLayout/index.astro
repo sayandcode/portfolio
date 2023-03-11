@@ -1,0 +1,86 @@
+---
+import { CollectionEntry } from "astro:content";
+import { marked } from "marked";
+import BaseHead from "components/BaseHead.astro";
+import Footer from "components/Footer.astro";
+import FormattedDate from "components/FormattedDate.astro";
+import Header from "components/Header.astro";
+import getReadMeContent from "./utils/readmeContent";
+
+export type Props = CollectionEntry<"projects">["data"];
+
+const {
+  title,
+  description,
+  startDate,
+  endDate,
+  liveUrl,
+  repoUrl,
+  rawContentUrl,
+} = Astro.props;
+
+const readmeContent = await getReadMeContent(rawContentUrl);
+const content = marked.parse(readmeContent);
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+
+  <body>
+    <Header />
+    <main>
+      <article class="mx-10">
+        <img
+          src={`${liveUrl}/favicon.ico`}
+          class="mx-auto mt-2 h-16 sm:h-20 w-16 sm:w-20 mb-4"
+          alt=""
+        />
+        <div
+          class="text-center mb-2 flex flex-col sm:flex-row justify-center items-center gap-x-2"
+        >
+          <h1 class="text-3xl sm:text-4xl">{title}</h1>
+          <div>
+            <FormattedDate date={startDate} /> - <FormattedDate
+              date={endDate}
+            />
+          </div>
+        </div>
+        <div class="flex gap-2 justify-center items-center mb-4">
+          <a
+            href={repoUrl}
+            class="bg-blue-400 hover:bg-blue-200 focus-visible:bg-blue-200 p-2 text-white text-sm sm:text-base"
+            target="_blank">View Code</a
+          >
+          <a
+            href={liveUrl}
+            class="bg-blue-400 hover:bg-blue-200 focus-visible:bg-blue-200 p-2 text-white text-sm sm:text-base"
+            target="_blank">View Live</a
+          >
+        </div>
+        <hr />
+        <br />
+        <div class="prose mx-auto md-content" set:html={content} />
+      </article>
+    </main>
+    <Footer />
+    <script>
+      import hljs from "highlight.js";
+      import "highlight.js/styles/base16/ros-pine-moon.css";
+      import js from "highlight.js/lib/languages/javascript";
+      import ts from "highlight.js/lib/languages/typescript";
+      import scss from "highlight.js/lib/languages/scss";
+      import css from "highlight.js/lib/languages/css";
+      import bash from "highlight.js/lib/languages/bash";
+
+      hljs.registerLanguage("javascript", js);
+      hljs.registerLanguage("typescript", ts);
+      hljs.registerLanguage("scss", scss);
+      hljs.registerLanguage("css", css);
+      hljs.registerLanguage("bash", bash);
+
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>

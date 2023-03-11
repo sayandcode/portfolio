@@ -11,21 +11,11 @@ import WhoAmI from "../components/index/WhoAmI.astro";
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-  <body>
+  <body class="h-screen flex flex-col">
     <Header title={SITE_TITLE} />
-    <main>
+    <main class="h-full">
       <WhoAmI />
     </main>
     <Footer />
-    <style>
-      body {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-      main {
-        height: 100%;
-      }
-    </style>
   </body>
 </html>
