@@ -1,0 +1,65 @@
+---
+import { Image } from "@astrojs/image/components";
+
+export type Props = { rawContentUrl: string };
+
+const { rawContentUrl } = Astro.props;
+const screenshotsFolder = `${rawContentUrl}/documentation/screenshots`;
+
+const countResult = await fetch(`${screenshotsFolder}/count.txt`);
+const screenshotCount = Number(await countResult.text());
+const screenshotPaths = Array(screenshotCount)
+  .fill("")
+  .map((_, i) => `${screenshotsFolder}/${i + 1}.png`);
+---
+
+<div class="swiper mb-4 sm:mb-8">
+  <ul class="swiper-wrapper">
+    {
+      screenshotPaths.map((src, i) => (
+        <li class="swiper-slide">
+          <Image
+            format="png"
+            width={1920}
+            height={960}
+            src={src}
+            alt={`Screenshot ${i + 1}`}
+            class="mx-auto w-4/5 h-auto object-contain object-center hidden sm:block"
+          />
+          <Image
+            format="png"
+            width={960}
+            height={480}
+            src={src}
+            alt={`Screenshot ${i + 1}`}
+            class="mx-auto w-5/6 h-auto object-contain object-center block sm:hidden"
+          />
+        </li>
+      ))
+    }
+  </ul>
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>
+<script>
+  import Swiper, { Navigation, Pagination, Autoplay } from "swiper";
+  import "swiper/css";
+  import "swiper/css/navigation";
+  import "swiper/css/pagination";
+
+  new Swiper(".swiper", {
+    modules: [Navigation, Pagination,Autoplay],
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    autoplay: {
+      disableOnInteraction: false
+    }
+  });
+</script>
