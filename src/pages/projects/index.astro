@@ -1,4 +1,5 @@
 ---
+import { Image } from "@astrojs/image/components";
 import { getCollection } from "astro:content";
 import BaseHead from "../../components/BaseHead.astro";
 import Footer from "../../components/Footer.astro";
@@ -20,11 +21,29 @@ const projects = (await getCollection("projects")).sort(
   <body>
     <Header />
     <main>
-      <ul>
+      <ul class="flex flex-wrap justify-center gap-4 mx-4 my-2">
         {
           projects.map((project) => (
-            <li>
-              <a href={`/projects/${project.slug}/`}>{project.data.title}</a>
+            <li class="w-full sm:w-auto sm:max-w-sm focus-within:bg-slate-100 hover:bg-slate-100 transition-all">
+              <a
+                href={`/projects/${project.slug}/`}
+                class="flex flex-col gap-2 group focus-visible:outline-blue-800 text-center"
+              >
+                <h2 class="order-2">{project.data.title}</h2>
+                <div class="order-1 relative flex justify-center items-center">
+                  <Image
+                    format="png"
+                    width={384}
+                    height={191}
+                    src={`${project.data.rawContentUrl}/documentation/screenshots/1.png`}
+                    alt={`${project.data.title} screenshot`}
+                    class="w-full h-auto group-focus-visible:brightness-[0.3] group-hover:brightness-[0.3] transition-all"
+                  />
+                  <p class="absolute text-slate-50 opacity-0 group-focus-visible:opacity-100 group-hover:opacity-100 transition-all">
+                    {project.data.description}
+                  </p>
+                </div>
+              </a>
             </li>
           ))
         }
