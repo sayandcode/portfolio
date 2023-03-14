@@ -1,4 +1,5 @@
 ---
+import { Image } from "@astrojs/image/components";
 import { CollectionEntry } from "astro:content";
 import { marked } from "marked";
 import BaseHead from "components/BaseHead.astro";
@@ -33,8 +34,11 @@ const content = marked.parse(readmeContent);
     <Header />
     <main>
       <article class="mx-10">
-        <img
-          src={`${liveUrl}/favicon.ico`}
+        <Image
+          height={80}
+          width={80}
+          format="png"
+          src={`${liveUrl}/favicon.png`}
           class="mx-auto mt-2 h-16 sm:h-20 w-16 sm:w-20 mb-4"
           alt=""
         />
