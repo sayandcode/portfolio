@@ -7,7 +7,10 @@ async function getReadMeContent(contentUrl: string) {
 }
 
 function fixRelativeImgs(contentUrl: string, text: string) {
-  return text.replaceAll(/(<img src=")(.*?")/g, `$1${contentUrl}/$2`);
+  return text.replaceAll(
+    /(<img src="(?!https:\/\/))(.*?")/g,
+    `$1${contentUrl}/$2`
+  );
 }
 
 function removeLine1(text: string) {

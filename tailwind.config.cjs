@@ -14,6 +14,9 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
+            img: {
+              "margin-inline": "auto",
+            },
             a: {
               "--base-color": "#3273dc",
               color: "var(--base-color)",

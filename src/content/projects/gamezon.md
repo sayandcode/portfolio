@@ -1,6 +1,6 @@
 ---
 title: "Gamezon"
-description: "An e-commerce store built with React, Material-UI and Firebase"
+description: "A web-scraped e-commerce store built with React, Material-UI and Firebase"
 startDate: "June 2022"
 endDate: "September 2022"
 rawContentUrl: "https://raw.githubusercontent.com/sayandcode/gamezon/main"
