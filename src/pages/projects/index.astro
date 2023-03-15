@@ -1,6 +1,7 @@
 ---
 import { Image } from "@astrojs/image/components";
 import { getCollection } from "astro:content";
+import StackOverflowFlair from "components/projects/index/StackOverflowFlair.astro";
 import BaseHead from "../../components/BaseHead.astro";
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
@@ -21,7 +22,7 @@ const projects = (await getCollection("projects")).sort(
   <body>
     <Header />
     <main>
-      <ul class="flex flex-wrap justify-center gap-4 mx-4 my-2">
+      <ul class="flex flex-wrap justify-center gap-4 mx-4 mt-2 mb-8">
         {
           projects.map((project) => (
             <li class="w-full sm:w-auto sm:max-w-sm focus-within:bg-slate-100 hover:bg-slate-100 transition-all">
@@ -48,7 +49,19 @@ const projects = (await getCollection("projects")).sort(
           ))
         }
       </ul>
+      <div
+        id="gh-calendar"
+        class="calendar max-w-screen-md w-4/5 font-sans mb-4"
+      >
+      </div>
+      <StackOverflowFlair />
     </main>
     <Footer />
+    <script>
+      import GitHubCalendar from "github-calendar";
+      import "github-calendar/dist/github-calendar-responsive.css";
+
+      GitHubCalendar(".calendar", "sayandcode", { responsive: true });
+    </script>
   </body>
 </html>
