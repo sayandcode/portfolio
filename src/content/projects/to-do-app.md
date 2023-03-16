@@ -6,4 +6,5 @@ endDate: "May 2022"
 rawContentUrl: "https://raw.githubusercontent.com/sayandcode/toDoApp/main"
 liveUrl: "https://sayandcode.github.io/toDoApp"
 repoUrl: "https://www.github.com/sayandcode/toDoApp"
+stack: ['javascript', 'scss', 'webpack', 'html']
 ---

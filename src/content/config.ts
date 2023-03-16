@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+import { techNames } from "layouts/ProjectLayout/Subcomponents/TechStackGrid/utils/techNameToImg";
 
 const projects = defineCollection({
   schema: z.object({
@@ -15,6 +16,11 @@ const projects = defineCollection({
     rawContentUrl: z.string(),
     liveUrl: z.string(),
     repoUrl: z.string(),
+    stack: z.array(
+      z.custom<(typeof techNames)[number]>((name: string) =>
+        techNames.includes(name as any)
+      )
+    ),
   }),
 });
 

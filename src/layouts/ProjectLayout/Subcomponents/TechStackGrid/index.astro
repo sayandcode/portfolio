@@ -1,0 +1,25 @@
+---
+import techNameToImg, { techNames } from "./utils/techNameToImg";
+
+export type Props = { stack: typeof techNames };
+
+const { stack } = Astro.props;
+---
+
+<h2 class="font-bold text-2xl">Tech Used:</h2>
+<div
+  class="max-w-screen-xl mx-auto grid gap-8 grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(15vw,_1fr))] items-center mb-8"
+>
+  {
+    stack.map((techName) => (
+      <img
+        src={techNameToImg(techName)}
+        class="w-full max-w-sm max-h-24 object-contain"
+        loading="lazy"
+        height={100}
+        width={250}
+        alt={techName}
+      />
+    ))
+  }
+</div>

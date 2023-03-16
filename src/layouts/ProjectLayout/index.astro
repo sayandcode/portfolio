@@ -8,6 +8,7 @@ import FormattedDate from "components/FormattedDate.astro";
 import Header from "components/Header.astro";
 import getReadMeContent from "./utils/readmeContent";
 import ImageSlider from "./Subcomponents/ImageSlider.astro";
+import TechStackGrid from "./Subcomponents/TechStackGrid/index.astro";
 
 export type Props = CollectionEntry<"projects">["data"];
 
@@ -19,6 +20,7 @@ const {
   liveUrl,
   repoUrl,
   rawContentUrl,
+  stack,
 } = Astro.props;
 
 const readmeContent = await getReadMeContent(rawContentUrl);
@@ -75,6 +77,7 @@ const content = marked(readmeContent);
         <hr />
         <br />
         <ImageSlider rawContentUrl={rawContentUrl} />
+        <TechStackGrid stack={stack} />
         <div class="prose mx-auto md-content" set:html={content} />
       </article>
     </main>
