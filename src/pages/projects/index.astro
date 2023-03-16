@@ -34,12 +34,13 @@ const projects = (await getCollection("projects")).sort(
                 <h2 class="order-2">{project.data.title}</h2>
                 <div class="order-1 relative flex justify-center items-center">
                   <Image
-                    format="png"
+                    format="webp"
                     width={384}
                     height={191}
                     src={`${project.data.rawContentUrl}/documentation/screenshots/1.png`}
                     alt={`${project.data.title} screenshot`}
-                    class="w-full h-auto group-focus-visible:brightness-[0.3] group-hover:brightness-[0.3] transition-all"
+                    class="w-full sm:w-[384px] h-auto sm:h-[191px] group-focus-visible:brightness-[0.3] group-hover:brightness-[0.3] transition-all"
+                    loading="eager"
                   />
                   <p class="absolute text-slate-50 opacity-0 group-focus-visible:opacity-100 group-hover:opacity-100 transition-all">
                     {project.data.description}

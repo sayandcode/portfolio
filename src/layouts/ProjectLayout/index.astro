@@ -22,7 +22,14 @@ const {
 } = Astro.props;
 
 const readmeContent = await getReadMeContent(rawContentUrl);
-const content = marked.parse(readmeContent);
+marked.use({
+  renderer: {
+    html(token) {
+      return token.replaceAll(/^<img /g, '<img loading="lazy" ');
+    },
+  },
+});
+const content = marked(readmeContent);
 ---
 
 <html lang="en">
@@ -38,6 +45,7 @@ const content = marked.parse(readmeContent);
           height={80}
           width={80}
           format="png"
+          loading="eager"
           src={`${liveUrl}/favicon.png`}
           class="mx-auto mt-2 h-16 sm:h-20 w-16 sm:w-20 mb-4"
           alt=""
