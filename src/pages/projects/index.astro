@@ -1,6 +1,7 @@
 ---
 import { Image } from "@astrojs/image/components";
 import { getCollection } from "astro:content";
+import Link from "components/Link.astro";
 import StackOverflowFlair from "components/projects/index/StackOverflowFlair.astro";
 import BaseHead from "../../components/BaseHead.astro";
 import Footer from "../../components/Footer.astro";
@@ -26,7 +27,7 @@ const projects = (await getCollection("projects")).sort(
         {
           projects.map((project) => (
             <li class="w-full sm:w-auto sm:max-w-sm focus-within:bg-slate-100 hover:bg-slate-100 transition-all">
-              <a
+              <Link
                 href={`/projects/${project.slug}/`}
                 class="flex flex-col gap-2 group focus-visible:outline-blue-800 text-center"
               >
@@ -44,7 +45,7 @@ const projects = (await getCollection("projects")).sort(
                     {project.data.description}
                   </p>
                 </div>
-              </a>
+              </Link>
             </li>
           ))
         }

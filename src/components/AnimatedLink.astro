@@ -4,9 +4,11 @@ import type { HTMLAttributes } from "astro/types";
 export type Props = HTMLAttributes<"a">;
 
 const { href, class: className, ...props } = Astro.props;
+const finalHref =
+  href && `${href}`.startsWith("http") ? href : `/portfolio${href}`;
 ---
 
-<a href={href} class:list={[className]} {...props}>
+<a href={finalHref} class:list={[className]} {...props}>
   <slot />
 </a>
 <style lang="scss">
@@ -21,7 +23,7 @@ const { href, class: className, ...props } = Astro.props;
     &:focus-visible {
       outline: none;
       color: white;
-      box-shadow: inset 0 -1.5em 0 0 var(--base-color);
+      box-shadow: inset 0 -4.5em 0 0 var(--base-color);
     }
   }
 </style>
