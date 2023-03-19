@@ -7,8 +7,7 @@ import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://sayandcode.github.io",
-  base: "portfolio",
+  site: "https://www.sayand.in",
   integrations: [
     mdx(),
     sitemap(),
